@@ -3,11 +3,11 @@
 import string
 
 
-def cipher(input: str, shift: int = 1) -> str:
+def cipher(input, shift = 1):
     """Caesar ciphers an input.
 
     Args:
-        input - The input to be ciphered
+        input - The input string to be ciphered
         shift - The amount of characters to shift by, defaults to 1
 
     Returns:
@@ -15,48 +15,32 @@ def cipher(input: str, shift: int = 1) -> str:
     """
 
     # The output
-    result = ""
+    result = []
 
     for ch in input:
         # Check if ch is part of the alphabet, pass if not
         if ch.isalpha():
             # handle uppercase
             if ch.isupper():
-                result += chr((ord(ch) + shift - 65) % 26 + 65)
+                result.append(chr((ord(ch) + shift - 65) % 26 + 65))
             # handle lowercase
             else:
-                result += chr((ord(ch) + shift - 97) % 26 + 97)
+                result.append(chr((ord(ch) + shift - 97) % 26 + 97))
         # if isn't alphanumeric ignore it
         else:
-            result += ch
-    return result
+            result.append(ch)
+    return "".join(result)
 
 
 def decipher(input, shift = 1):
     """Deciphers a caesar ciphered input.
 
     Args:
-        input - The input to be deciphered
+        input - The input string to be deciphered
         shift - The amount of characters to shift by, defaults to 1
 
     Returns:
         The deciphered output
     """
 
-    # Output
-    result = ""
-
-    for ch in input:
-        # Check if ch is part of the alphabet, pass if not
-        if ch.isalpha():
-            # handle uppercase
-            if ch.isupper():
-                result += chr((ord(ch) - shift - 65) % 26 + 65)
-            # handle lowercase
-            else:
-                result += chr((ord(ch) - shift - 97) % 26 + 97)
-        # if isn't alphanumeric ignore it
-        else:
-            result += ch
-
-    return result
+    return cipher(input, -shift)
