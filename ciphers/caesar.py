@@ -3,7 +3,7 @@
 import string
 
 
-def cipher(input, shift = 1):
+def cipher(input, shift=1):
     """Caesar ciphers an input.
 
     Args:
@@ -26,13 +26,13 @@ def cipher(input, shift = 1):
             # handle lowercase
             else:
                 result.append(chr((ord(ch) + shift - 97) % 26 + 97))
-        # if isn't alphanumeric ignore it
+        # if isn't part of the alphabet ignore it
         else:
             result.append(ch)
     return "".join(result)
 
 
-def decipher(input, shift = 1):
+def decipher(input, shift=1):
     """Deciphers a caesar ciphered input.
 
     Args:
